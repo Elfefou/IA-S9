@@ -1,6 +1,6 @@
 package machineLearning;
 
-import com.mycompany.mcbotproject.EmptyBot;
+import com.mycompany.mavenproject1.EmptyBot;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;

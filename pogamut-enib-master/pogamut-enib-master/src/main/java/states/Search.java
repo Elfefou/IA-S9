@@ -17,7 +17,7 @@
 
 package states;
 
-import com.mycompany.mcbotproject.EmptyBot;
+import com.mycompany.mavenproject1.EmptyBot;
 import cz.cuni.amis.pogamut.base3d.worldview.object.Location;
 
 /**

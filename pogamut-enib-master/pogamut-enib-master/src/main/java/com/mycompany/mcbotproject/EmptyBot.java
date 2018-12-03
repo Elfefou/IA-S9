@@ -1,4 +1,4 @@
-package com.mycompany.mcbotproject;
+package com.mycompany.mavenproject1;
 
 import states.*;
 
