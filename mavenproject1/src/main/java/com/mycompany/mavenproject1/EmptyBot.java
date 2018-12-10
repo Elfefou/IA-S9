@@ -227,7 +227,9 @@ public class EmptyBot extends UT2004BotModuleController {
         }
         if (bot.getSelf().getHealth() < HealLimit && bot.getSelf().getHealth() > 0) {
             log.info("hurt state");
+            Player target = players.getNearestPlayer(2.0);
             st = new Hurt(this);
+            st.setTarget(target);
             SearchCounter=0;
         }
         if (players.canSeePlayers() && !(st instanceof Hurt) ) {
@@ -268,7 +270,7 @@ public class EmptyBot extends UT2004BotModuleController {
     
     @Override
     public void botKilled(BotKilled event) {
-        currentState = new Idle(this);
+        currentState = new Dead(this);
     }
        
 }

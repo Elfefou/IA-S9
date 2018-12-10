@@ -33,7 +33,7 @@ public class Search  extends State{
 
     public void run() {
       _bot.getNavigation().getNearestNavPoint(this.getLastPlayerLocation());
-      
+      _bot.getShoot().stopShooting();
  //     if(_bot.getBot().getLocation().getDistance(this.getLastPlayerLocation())<50) done=true;
     }
 }

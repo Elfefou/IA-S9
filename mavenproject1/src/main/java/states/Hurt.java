@@ -18,9 +18,16 @@ package states;
 
 import com.mycompany.mavenproject1.EmptyBot;
 import cz.cuni.amis.pogamut.base3d.worldview.object.Location;
+import cz.cuni.amis.pogamut.unreal.communication.messages.UnrealId;
 import cz.cuni.amis.pogamut.ut2004.communication.messages.ItemType;
+import cz.cuni.amis.pogamut.ut2004.communication.messages.gbcommands.SendMessage;
 import cz.cuni.amis.pogamut.ut2004.communication.messages.gbinfomessages.NavPoint;
 import cz.cuni.amis.pogamut.ut2004.communication.messages.gbinfomessages.Player;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
 /**
  *
@@ -34,7 +41,15 @@ public class Hurt  extends State{
     }
 
     public void run() {
+         _bot.getShoot().stopShooting();
          _bot.getNavigation().navigate(_bot.getItems().getPathNearestSpawnedItem((ItemType.Category.HEALTH)));
+
+         //
+         _bot.getNavigation().navigate(_bot.getNavPoints().getRandomNavPoint());
+         
+         //_bot.getNavPoints().getNavPoints();
+         //_bot.getNavigation().navigate(_bot.getVisibility().getNearestCoverNavPointFrom(this.getTarget()));
+         //_bot.getNavPoints().getVisibleNavPoints();
      /*   _bot.getShoot().stopShooting(); 
         if (_bot.getItems().getNearestSpawnedItem(ItemType.Category.HEALTH) != null) {
             _bot.getNavigation().navigate(_bot.getItems().getPathNearestSpawnedItem((ItemType.Category.HEALTH)));
