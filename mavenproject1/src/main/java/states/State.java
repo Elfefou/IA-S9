@@ -22,10 +22,6 @@ import cz.cuni.amis.pogamut.base3d.worldview.object.Location;
 import cz.cuni.amis.pogamut.ut2004.agent.module.sensor.NavPoints;
 import cz.cuni.amis.pogamut.ut2004.communication.messages.gbinfomessages.Player;
 
-/**
- *
- * @author m3lefloc
- */
 public abstract class State {
     private Location lastPlayerLocation;
    

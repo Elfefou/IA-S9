@@ -21,10 +21,7 @@ import com.mycompany.mavenproject1.EmptyBot;
 import cz.cuni.amis.pogamut.ut2004.bot.impl.UT2004BotModuleController;
 import cz.cuni.amis.pogamut.base3d.worldview.object.Location;
 
-/**
- *
- * @author m3lefloc
- */
+
 public class Search  extends State{
     
     public Search(EmptyBot bot) {

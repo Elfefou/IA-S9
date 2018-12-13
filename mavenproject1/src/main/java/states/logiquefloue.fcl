@@ -1,0 +1,38 @@
+
+FUNCTION_BLOCK tipper	
+
+VAR_INPUT				
+	HP : REAL;
+	distance : REAL;
+END_VAR
+
+VAR_OUTPUT				
+	attack : REAL;
+	
+END_VAR
+
+FUZZIFY HP			
+	TERM low := (0, 1) (50, 0) (100,0); 
+	TERM medium := (0, 0) (25,0) (50,1) (75,0) (100,0);
+	TERM high := (0, 0) (50,0) (100,1) ;
+	
+END_FUZZIFY
+
+FUZZIFY distance			
+	TERM low := (0,1) (500,0);
+	TERM medium := (0,0) (400,0) (1000,1) (1250,0);
+	TERM high := (0,0) (1000,0) (1500,1);
+END_FUZZIFY
+	 
+DEFUZZIFY attack			
+	TERM aggressive := (0,0) (1,1);
+	TERM defensive := (0,1) (1,0);
+        METHOD : COG;		// Use 'Center Of Gravity' defuzzification method
+	DEFAULT := 20;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+	RULE 1 : IF HP IS high or HP is low THEN attack IS defensive;
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

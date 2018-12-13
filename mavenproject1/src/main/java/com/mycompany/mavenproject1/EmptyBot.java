@@ -8,6 +8,7 @@ import cz.cuni.amis.pogamut.base.utils.guice.AgentScoped;
 import cz.cuni.amis.pogamut.base3d.worldview.object.Location;
 import cz.cuni.amis.pogamut.ut2004.bot.impl.UT2004Bot;
 import cz.cuni.amis.pogamut.ut2004.bot.impl.UT2004BotModuleController;
+import static cz.cuni.amis.pogamut.ut2004.communication.messages.UT2004ItemType.ASSAULT_RIFLE;
 import cz.cuni.amis.pogamut.ut2004.communication.messages.gbcommands.Initialize;
 import cz.cuni.amis.pogamut.ut2004.communication.messages.gbcommands.SendMessage;
 import cz.cuni.amis.pogamut.ut2004.communication.messages.gbinfomessages.BotDamaged;
@@ -20,6 +21,11 @@ import cz.cuni.amis.pogamut.ut2004.communication.messages.gbinfomessages.PlayerK
 import cz.cuni.amis.pogamut.ut2004.communication.messages.gbinfomessages.Self;
 import cz.cuni.amis.pogamut.ut2004.utils.UT2004BotRunner;
 import cz.cuni.amis.utils.exception.PogamutException;
+import net.sourceforge.jFuzzyLogic.*;
+import net.sourceforge.jFuzzyLogic.FIS;
+import net.sourceforge.jFuzzyLogic.rule.FuzzyRuleSet;
+import net.sourceforge.jFuzzyLogic.rule.Variable;
+
 
 @AgentScoped
 public class EmptyBot extends UT2004BotModuleController {
@@ -34,7 +40,7 @@ public class EmptyBot extends UT2004BotModuleController {
     public int intProp = 2;
     @JProp
     public double doubleProp = 1.0;
-    public int HealLimit = 50;
+    public int HealLimit = 200;
     private Player lastPlayer;
     private long lastLogicTime = -1;
     private long logicIterationNumber = 0;
@@ -227,7 +233,27 @@ public class EmptyBot extends UT2004BotModuleController {
         }
         if (bot.getSelf().getHealth() < HealLimit && bot.getSelf().getHealth() > 0) {
             log.info("hurt state");
+   
+
+            Location locationBot = bot.getLocation();
             Player target = players.getNearestPlayer(2.0);
+            if(target!=null){
+                Location locationTarget = target.getLocation();
+                double distance = Location.getDistance(locationBot, locationTarget);
+                //log.info("distance au joueur : " + distance);
+                String fileName = "Z:\\mavenproject1\\src\\main\\java\\states\\logiquefloue.fcl";
+                FIS fis = FIS.load(fileName,true);
+                FuzzyRuleSet rule = fis.getFuzzyRuleSet();
+                rule.setVariable("HP", (double)bot.getSelf().getHealth());
+                
+                rule.setVariable("distance",distance);
+                rule.evaluate();
+                        
+                Variable aggresivity = rule.getVariable("attack");
+                log.info("agressivity : " + aggresivity.getValue());
+            }
+          
+            
             st = new Hurt(this);
             st.setTarget(target);
             SearchCounter=0;

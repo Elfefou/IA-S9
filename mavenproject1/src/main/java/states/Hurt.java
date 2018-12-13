@@ -28,11 +28,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import net.sourceforge.jFuzzyLogic.FIS;
+import net.sourceforge.jFuzzyLogic.rule.FuzzyRuleSet;
 
-/**
- *
- * @author m3lefloc
- */
+
+
 public class Hurt  extends State{
 
 
@@ -41,6 +41,24 @@ public class Hurt  extends State{
     }
 
     public void run() {
+      
+
+       
+
+        // Set inputs
+      /*
+        fis.setVariable("service", 3);
+        fis.setVariable("food", 7)
+
+        // Evaluate
+        fis.evaluate();
+
+        // Show output variable's chart
+        Variable tip = functionBlock.getVariable("tip");*/
+       
+
+        // Print ruleSet
+       // System.out.println(fis);
          _bot.getShoot().stopShooting();
          _bot.getNavigation().navigate(_bot.getItems().getPathNearestSpawnedItem((ItemType.Category.HEALTH)));
 

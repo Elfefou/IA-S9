@@ -25,10 +25,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 
-/**
- *
- * @author m3lefloc
- */
+
 public class Attack extends State{
 
   

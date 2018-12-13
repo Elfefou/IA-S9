@@ -19,10 +19,7 @@ package states;
 
 import com.mycompany.mavenproject1.EmptyBot;
 
-/**
- *
- * @author m3lefloc
- */
+
 public class Dead  extends State{
     
     public Dead(EmptyBot bot) {

@@ -19,10 +19,7 @@ package states;
 import com.mycompany.mavenproject1.EmptyBot;
 import cz.cuni.amis.pogamut.ut2004.agent.module.sensor.NavPoints;
 
-/**
- *
- * @author m3lefloc
- */
+
 public class Idle  extends State{
 
     
